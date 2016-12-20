@@ -1,0 +1,17 @@
+%h3 Users
+%table
+  %tr
+    %th User |
+    %th Comments count
+  - @users.each do |user|
+    %tr
+      %td 
+        = user.login 
+      %td 
+        = user.comments.count
+      %td 
+        = link_to 'Show', user
+        = link_to 'Delete', user, method: :delete
+%p
+  = link_to "Create user", new_user_path
+  = link_to "Create post", new_post_path

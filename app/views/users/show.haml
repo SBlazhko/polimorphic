@@ -1,0 +1,18 @@
+%p= link_to 'Back', users_path
+%h3 User #{@user.id}
+%p
+  User: #{@user.login}
+%h3 Add comment
+= form_for @user.comments.new do |f|
+  %p
+    = f.text_area :text, placeholder: "Write a comment text"
+    = f.hidden_field :commentable_type, value: "User"
+    = f.hidden_field :commentable_id, value:  @user.id
+  %p
+    = f.submit 'Save'
+%h3 Comments
+%table
+  - @user.comments.each do |comment|
+    %tr
+      %p
+        = comment.text

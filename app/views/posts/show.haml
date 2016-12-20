@@ -1,0 +1,18 @@
+%p
+  = link_to 'Back', posts_path
+%h1
+  Post #{@post.id}
+%p
+  Text: #{@post.text}
+%h2 Add comment
+= form_for @post.comments.new do |f|
+  = f.hidden_field :commentable_type, value: 'Post'
+  = f.hidden_field :commentable_id, value: @post.id
+  = f.text_area :text
+  = f.submit 'Save'
+%h2 Comments
+%table
+  - @post.comments.each do |comment|
+    %tr
+      %p
+        = comment.text

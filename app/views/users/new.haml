@@ -1,0 +1,9 @@
+%h1
+  New User
+= form_for @user do |f|
+  %p
+    = f.label :login
+  %p
+    = f.text_field :login, placeholder: "Write user login"
+  %p
+    = f.submit "Create user"
